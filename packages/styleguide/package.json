@@ -1,0 +1,65 @@
+{
+  "name": "@times-components/styleguide",
+  "version": "0.0.1",
+  "description": "Styleguide component",
+  "main": "styleguide",
+  "scripts": {
+    "test:watch": "jest --bail --verbose --watchAll",
+    "test": "jest --bail --ci --coverage",
+    "fmt": "prettier --write '**/*.*'",
+    "prettier:diff": "prettier --list-different '**/*.*'",
+    "lint": "eslint . && yarn prettier:diff",
+    "dextrose-stories": "dextrose-stories",
+    "dextrose-clean": "dextrose-clean"
+  },
+  "jest": {
+    "preset": "react-native",
+    "rootDir": "../../",
+    "coverageDirectory": "<rootDir>/packages/styleguide/coverage/",
+    "collectCoverageFrom": ["**/packages/styleguide/styleguide.js"],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(react-native|@times-components)/)"
+    ],
+    "testMatch": ["<rootDir>/packages/styleguide/__tests__/**.test.js"]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/newsuk/times-components.git"
+  },
+  "keywords": [
+    "react-native-web",
+    "react",
+    "native",
+    "web",
+    "styleguide",
+    "component"
+  ],
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/newsuk/times-components/issues"
+  },
+  "homepage": "https://github.com/newsuk/times-components#readme",
+  "dependencies": {
+    "prop-types": "15.6.0"
+  },
+  "devDependencies": {
+    "@storybook/react-native": "3.2.18",
+    "@times-components/eslint-config-thetimes": "0.1.2",
+    "dextrose": "1.2.14",
+    "eslint": "4.9.0",
+    "jest": "21.2.1",
+    "prettier": "1.8.2",
+    "react": "16.2.0",
+    "react-dom": "16.2.0",
+    "react-test-renderer": "16.2.0"
+  },
+  "peerDependencies": {
+    "react": ">=16",
+    "react-dom": ">=16",
+    "react-native": ">=0.50",
+    "react-native-web": ">=0.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
