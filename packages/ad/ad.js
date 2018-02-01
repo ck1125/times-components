@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { Subscriber } from "react-broadcast";
 import { View, ViewPropTypes, Dimensions, StyleSheet } from "react-native";
 import { getSlotConfig, getSizeMaps } from "./generate-config";
 import Placeholder from "./placeholder";
@@ -70,11 +71,17 @@ class Ad extends Component {
       />
     ) : null;
 
-    return (
+    const renderAd = (
       <View style={[this.props.style]}>
         {webviewComponent}
         {placeholderComponent}
       </View>
+    );
+
+    return (
+      <Subscriber channel="adChannel">
+        {adManager => this.renderAd()}
+      </Subscriber>
     );
   }
 }

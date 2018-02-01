@@ -9,6 +9,7 @@ import ArticleHeader from "./article-header/article-header";
 import ArticleMeta from "./article-meta/article-meta";
 import ArticleBody from "./article-body/article-body";
 import LeadAssetComponent from "./article-lead-asset.web";
+import { articleAdTypes } from "./article-ad-proptypes";
 
 import articleTrackingContext from "./article-tracking-context";
 
@@ -81,15 +82,32 @@ class ArticlePage extends React.Component {
     if (isLoading) {
       return <ArticleLoading />;
     }
+    const articleData = this.props.article;
 
-    return ArticlePage.renderArticle(this.props.article);
+    const articleAdConfig = {
+      id: articleData.id,
+      title: articleData.headline || "",
+      label: articleData.label || "",
+      networkId: "25436805",
+      adUnit: "d.thetimes.co.uk",
+      section: articleData.section || "article",
+      commercialtags: articleData.commercialTags || "",
+      contentType: "art"
+    };
+
+    return (
+      <AdComposer adConfig={articleAdConfig}>
+        {ArticlePage.renderArticle(articleData)}
+      </AdComposer>
+    );
   }
 }
 
 ArticlePage.propTypes = {
   article: PropTypes.shape({
     ...ArticleHeader.propTypes,
-    ...ArticleMeta.propTypes
+    ...ArticleMeta.propTypes,
+    ...articleAdTypes
   }),
   isLoading: PropTypes.bool,
   error: PropTypes.shape({
