@@ -1,13 +1,15 @@
 /* global window, nuk */
+import {getSubscriber, cookieHelper} from './ad-config';
+
 import { isSubscriber } from "@times-components/utils/is-subscriber";
 import { cookieHelper } from "@times-components/utils/cookie-helper";
 import localStorage from "store";
 
-const getSubscriber = () => {
+export const getSubscriber = () => {
   return isSubscriber() ? "1" : "0";
 };
 
-const isLoggedIn = () => {
+export const isLoggedIn = () => {
   return nuk.user.isLoggedIn ? "1" : "0";
 };
 
