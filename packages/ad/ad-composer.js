@@ -18,15 +18,17 @@ AdComposer.propTypes = {
     PropTypes.arrayOf(PropTypes.element)
   ]).isRequired,
   adConfig: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string,
-    label: PropTypes.string,
-    commercialtags: PropTypes.string,
-    contentType: PropTypes.string.isRequired,
-    section: PropTypes.string.isRequired,
     networkId: PropTypes.string.isRequired,
-    adUnit: PropTypes.string.isRequired
-  }).isRequired
+    adUnit: PropTypes.string.isRequired,
+    pageTargeting: PropTypes.shape({})
+  })
 };
 
+AdComposer.defaultProps = {
+  adConfig: {
+    networkId: "25436805",
+    adUnit: "d.thetimes.co.uk",
+    pageTargeting: {},
+  }
+};
 export default AdComposer;

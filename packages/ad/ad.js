@@ -7,8 +7,7 @@ import Placeholder from "./placeholder";
 import DOMContext from "./dom-context";
 import adInit from "./ad-init";
 import slotOptions from "./fixtures/slot-options.json";
-
-import { getPageLevelTargetingValues } from "./ad-config";
+import AdComposer from "./ad-composer";
 
 const { style: ViewPropTypesStyle } = ViewPropTypes;
 
@@ -44,7 +43,7 @@ class Ad extends Component {
       networkId: adConfig.networkId,
       adUnit: adConfig.adUnit,
       sizingMap: getSizeMaps(this.props.code),
-      pageOptions: getPageLevelTargetingValues(adConfig),
+      pageTargeting: adConfig.pageTargeting,
       slotOptions: { ...slotOptions, pos: this.props.pos }
     };
 
@@ -111,3 +110,5 @@ Ad.defaultProps = {
 };
 
 export default Ad;
+
+export { AdComposer };

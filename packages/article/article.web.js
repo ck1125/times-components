@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { View } from "react-native";
 import PropTypes from "prop-types";
-import Ad from "@times-components/ad";
+import Ad, { AdComposer } from "@times-components/ad";
 
 import ArticleError from "./article-error";
 import ArticleLoading from "./article-loading";
@@ -82,22 +82,10 @@ class ArticlePage extends React.Component {
     if (isLoading) {
       return <ArticleLoading />;
     }
-    const articleData = this.props.article;
-
-    const articleAdConfig = {
-      id: articleData.id,
-      title: articleData.headline || "",
-      label: articleData.label || "",
-      networkId: "25436805",
-      adUnit: "d.thetimes.co.uk",
-      section: articleData.section || "article",
-      commercialtags: articleData.commercialTags || "",
-      contentType: "art"
-    };
 
     return (
-      <AdComposer adConfig={articleAdConfig}>
-        {ArticlePage.renderArticle(articleData)}
+      <AdComposer adConfig={this.props.adConfig}>
+        {ArticlePage.renderArticle(this.props.article)}
       </AdComposer>
     );
   }
@@ -116,7 +104,8 @@ ArticlePage.propTypes = {
       message: PropTypes.string
     }),
     message: PropTypes.string
-  })
+  }),
+  adPageTargeting: PropTypes.shape({})
 };
 
 ArticlePage.defaultProps = {

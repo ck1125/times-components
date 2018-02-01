@@ -11,7 +11,7 @@ const adInit = args => {
     pageInit() {
       googletag.cmd.push(() => {
         const pubads = googletag.pubads();
-        Object.entries(data.pageOptions || {}).forEach(entry =>
+        Object.entries(data.pageTargeting || {}).forEach(entry =>
           pubads.setTargeting(entry[0], entry[1])
         );
         googletag.pubads().disableInitialLoad();

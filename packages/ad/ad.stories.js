@@ -20,6 +20,9 @@ if (window.document) {
 }
 
 const withOpenInNewWindow = children => {
+  if (window.globalAdInitComplete) {
+    window.location.reload();
+  }
   const link = typeof document === "object" &&
     window !== window.top && (
       <a
@@ -40,14 +43,12 @@ const withOpenInNewWindow = children => {
 };
 
 const articleAdConfig = {
-  id: "122",
-  title: "title",
-  label: "this is label",
   networkId: "25436805",
   adUnit: "d.thetimes.co.uk",
-  section: "article",
-  commercialtags: "This is tag",
-  contentType: "art"
+  pageTargeting: {
+    title: "This is title",
+    label: "This is label"
+  },
 };
 
 storiesOf("Advertisement", module).add("render one ad", () =>
