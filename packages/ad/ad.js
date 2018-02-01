@@ -6,8 +6,9 @@ import { getSlotConfig, getSizeMaps } from "./generate-config";
 import Placeholder from "./placeholder";
 import DOMContext from "./dom-context";
 import adInit from "./ad-init";
-import pageOptions from "./fixtures/page-options.json";
 import slotOptions from "./fixtures/slot-options.json";
+
+import { getPageLevelTargetingValues } from "./ad-config";
 
 const { style: ViewPropTypesStyle } = ViewPropTypes;
 
@@ -34,16 +35,16 @@ class Ad extends Component {
     });
   };
 
-  render() {
+  renderAd(adConfig) {
     const data = {
+      // TODO: rename to slotConfig
       config: this.config,
       code: this.props.code,
-      networkId: this.props.networkId,
-      adUnit: this.props.adUnit,
-      section: this.props.section,
       pos: this.props.pos,
+      networkId: adConfig.networkId,
+      adUnit: adConfig.adUnit,
       sizingMap: getSizeMaps(this.props.code),
-      pageOptions,
+      pageOptions: getPageLevelTargetingValues(adConfig),
       slotOptions: { ...slotOptions, pos: this.props.pos }
     };
 
@@ -71,16 +72,18 @@ class Ad extends Component {
       />
     ) : null;
 
-    const renderAd = (
+    return (
       <View style={[this.props.style]}>
         {webviewComponent}
         {placeholderComponent}
       </View>
     );
+  }
 
+  render() {
     return (
-      <Subscriber channel="adChannel">
-        {adManager => this.renderAd()}
+      <Subscriber channel="adConfig">
+        {adConfig => this.renderAd(adConfig)}
       </Subscriber>
     );
   }
