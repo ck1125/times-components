@@ -48,7 +48,7 @@ const articleAdConfig = {
   pageTargeting: {
     title: "This is title",
     label: "This is label"
-  },
+  }
 };
 
 storiesOf("Advertisement", module).add("render one ad", () =>

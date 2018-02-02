@@ -28,7 +28,7 @@ AdComposer.defaultProps = {
   adConfig: {
     networkId: "25436805",
     adUnit: "d.thetimes.co.uk",
-    pageTargeting: {},
+    pageTargeting: {}
   }
 };
 export default AdComposer;
