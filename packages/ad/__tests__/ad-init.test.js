@@ -94,7 +94,7 @@ describe("Ad init", () => {
   });
 
   it("configures googletag on page init", () => {
-    initOptions.data.pageOptions = { pageOptionName: "pageOptionValue" };
+    initOptions.data.pageTargeting = { pageOptionName: "pageOptionValue" };
     init = adInit(initOptions);
     init.pageInit();
     processGoogletagCommandQueue();

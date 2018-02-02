@@ -1,16 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { Broadcast } from "react-broadcast";
 
-class AdComposer extends Component {
-  render() {
-    return (
-      <Broadcast channel="adConfig" value={this.props.adConfig}>
-        {this.props.children}
-      </Broadcast>
-    );
-  }
-}
+const AdComposer = props => (
+  <Broadcast channel="adConfig" value={props.adConfig}>
+    {props.children}
+  </Broadcast>
+);
 
 AdComposer.propTypes = {
   children: PropTypes.oneOfType([

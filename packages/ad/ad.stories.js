@@ -42,175 +42,176 @@ const withOpenInNewWindow = children => {
   );
 };
 
-const articleAdConfig = {
-  networkId: "25436805",
-  adUnit: "d.thetimes.co.uk",
-  pageTargeting: {
-    title: "This is title",
-    label: "This is label"
-  }
-};
-
-storiesOf("Advertisement", module).add("render one ad", () =>
-  withOpenInNewWindow(
-    <AdComposer adConfig={articleAdConfig}>
-      <Ad code="intervention" />
-    </AdComposer>
+storiesOf("Advertisement", module)
+  .add("render one ad", () =>
+    withOpenInNewWindow(
+      <AdComposer>
+        <Ad code="intervention" />
+      </AdComposer>
+    )
   )
-);
-// .add("render article ads", () =>
-//   withOpenInNewWindow(
-//     <View>
-//       <Ad section="article" code="ad-header" pos="header" />
-//       <Ad section="article" code="intervention" pos="inline-ad" />
-//       <Ad
-//         section="article"
-//         code="ad-article-sponsored"
-//         pos="article-sponsored-ad"
-//       />
-//     </View>
-//   )
-// )
-// .add("sponsored ads", () =>
-//   withOpenInNewWindow(
-//     <View>
-//       <Ad
-//         section="article"
-//         code="ad-article-sponsored"
-//         pos="article-sponsored-ad"
-//         networkId="3048"
-//         width={1024}
-//         height={250}
-//       />
-//     </View>
-//   )
-// )
-// .add("render one ad and some text", () =>
-//   withOpenInNewWindow(
-//     <ScrollView>
-//       <Text style={{ color: "blue" }}>
-//         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
-//         elementum ex id diam eleifend convallis. Nulla faucibus nec nibh sed
-//         condimentum.
-//       </Text>
-//       <Ad code="intervention" section="article" />
-//       <Text style={{ color: "red" }}>
-//         Class aptent taciti sociosqu ad litora torquent per conubia nostra,
-//         per inceptos himenaeos. Curabitur non sem ut sapien viverra pharetra
-//         eu a nulla. Donec egestas ex quis enim porttitor consequat.
-//       </Text>
-//     </ScrollView>
-//   )
-// )
-// .add("render two ads and some text", () =>
-//   withOpenInNewWindow(
-//     <ScrollView>
-//       <Text>
-//         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
-//         elementum ex id diam eleifend convallis. Nulla faucibus nec nibh sed
-//         condimentum. Maecenas id nulla a elit pulvinar hendrerit nec nec
-//         massa. Morbi et leo sed mauris pellentesque euismod ornare nec enim.
-//         Orci varius natoque penatibus et magnis dis parturient montes,
-//         nascetur ridiculus mus.
-//       </Text>
-//       <Ad code="header" section="article" />
-//       <Text>
-//         Donec convallis enim sit amet elit pharetra, et aliquet augue blandit.
-//         Integer suscipit mollis libero, et imperdiet nunc. Aenean eu lacus
-//         aliquam, ullamcorper ante at, egestas orci. Aliquam finibus, nulla in
-//         convallis mollis, elit nisi pretium neque, sed congue tortor erat
-//         vitae erat. Nulla eget nulla rhoncus, sollicitudin ipsum et, volutpat
-//         ligula.
-//       </Text>
-//       <Ad code="intervention" section="article" />
-//       <Text>
-//         Aliquam dapibus risus a leo euismod, sed dignissim nibh commodo. Donec
-//         vitae justo aliquam, pellentesque risus laoreet, hendrerit augue.
-//         Proin faucibus ex non felis euismod, et vulputate mi placerat. Donec
-//         maximus sem sapien, vel accumsan dui molestie at. Proin sit amet leo
-//         quam. Praesent risus magna, dapibus eget velit sed, placerat
-//         vestibulum leo. Suspendisse luctus vitae dui vitae fermentum. Nam
-//         lobortis mattis enim, eu porta mi.
-//       </Text>
-//     </ScrollView>
-//   )
-// )
-// .add("remove and re-add ads", () => {
-//   const Component = stateful((props, { show }, { setState }) =>
-//     withOpenInNewWindow(
-//       <ScrollView>
-//         <Ad code="header" section="article" />
-//         <Text
-//           style={{ color: "blue", textDecoration: "underline" }}
-//           onPress={() => setState({ show: !show })}
-//         >
-//           {show ? "hide second ad" : "show second ad"}.
-//         </Text>
-//         {show && <Ad code="intervention" section="article" />}
-//       </ScrollView>
-//     )
-//   );
-//   return <Component />;
-// })
-// .add("Placeholder (300x250 - MPU)", () => (
-//   <Placeholder width={300} height={250} />
-// ))
-// .add("Placeholder (728x90 - Default)", () => (
-//   <Placeholder width={728} height={90} />
-// ))
-// .add("Placeholder (970x250 - Billboard)", () => (
-//   <Placeholder width={970} height={250} />
-// ))
-// .add("DOMContext", () => {
-//   // script content: `window.global1 = "external value";`
-//   const script =
-//     "data:text/javascript;charset=utf-8;base64,d2luZG93Lmdsb2JhbDEgPSAiZXh0ZXJuYWwgdmFsdWUiOw==";
+  .add("render article ads", () =>
+    withOpenInNewWindow(
+      <View>
+        <AdComposer>
+          <Ad code="ad-header" pos="header" />
+        </AdComposer>
+        <AdComposer>
+          <Ad code="intervention" pos="inline-ad" />
+        </AdComposer>
+        <AdComposer>
+          <Ad code="ad-article-sponsored" pos="article-sponsored-ad" />
+        </AdComposer>
+      </View>
+    )
+  )
+  .add("sponsored ads", () =>
+    withOpenInNewWindow(
+      <View>
+        <AdComposer>
+          <Ad
+            code="ad-article-sponsored"
+            pos="article-sponsored-ad"
+            width={1024}
+            height={250}
+          />
+        </AdComposer>
+      </View>
+    )
+  )
+  .add("render one ad and some text", () =>
+    withOpenInNewWindow(
+      <ScrollView>
+        <Text style={{ color: "blue" }}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
+          elementum ex id diam eleifend convallis. Nulla faucibus nec nibh sed
+          condimentum.
+        </Text>
+        <AdComposer>
+          <Ad code="intervention" />
+        </AdComposer>
+        <Text style={{ color: "red" }}>
+          Class aptent taciti sociosqu ad litora torquent per conubia nostra,
+          per inceptos himenaeos. Curabitur non sem ut sapien viverra pharetra
+          eu a nulla. Donec egestas ex quis enim porttitor consequat.
+        </Text>
+      </ScrollView>
+    )
+  )
+  .add("render two ads and some text", () =>
+    withOpenInNewWindow(
+      <ScrollView>
+        <Text>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
+          elementum ex id diam eleifend convallis. Nulla faucibus nec nibh sed
+          condimentum. Maecenas id nulla a elit pulvinar hendrerit nec nec
+          massa. Morbi et leo sed mauris pellentesque euismod ornare nec enim.
+          Orci varius natoque penatibus et magnis dis parturient montes,
+          nascetur ridiculus mus.
+        </Text>
+        <AdComposer>
+          <Ad code="header" />
+        </AdComposer>
+        <Text>
+          Donec convallis enim sit amet elit pharetra, et aliquet augue blandit.
+          Integer suscipit mollis libero, et imperdiet nunc. Aenean eu lacus
+          aliquam, ullamcorper ante at, egestas orci. Aliquam finibus, nulla in
+          convallis mollis, elit nisi pretium neque, sed congue tortor erat
+          vitae erat. Nulla eget nulla rhoncus, sollicitudin ipsum et, volutpat
+          ligula.
+        </Text>
+        <AdComposer>
+          <Ad code="intervention" />
+        </AdComposer>
+        <Text>
+          Aliquam dapibus risus a leo euismod, sed dignissim nibh commodo. Donec
+          vitae justo aliquam, pellentesque risus laoreet, hendrerit augue.
+          Proin faucibus ex non felis euismod, et vulputate mi placerat. Donec
+          maximus sem sapien, vel accumsan dui molestie at. Proin sit amet leo
+          quam. Praesent risus magna, dapibus eget velit sed, placerat
+          vestibulum leo. Suspendisse luctus vitae dui vitae fermentum. Nam
+          lobortis mattis enim, eu porta mi.
+        </Text>
+      </ScrollView>
+    )
+  )
+  .add("remove and re-add ads", () => {
+    const Component = stateful((props, { show }, { setState }) =>
+      withOpenInNewWindow(
+        <ScrollView>
+          <AdComposer>
+            <Ad code="header" />
+          </AdComposer>
+          <Text
+            style={{ color: "blue", textDecoration: "underline" }}
+            onPress={() => setState({ show: !show })}
+          >
+            {show ? "hide second ad" : "show second ad"}.
+          </Text>
+          {show && <Ad code="intervention" />}
+        </ScrollView>
+      )
+    );
+    return <Component />;
+  })
+  .add("Placeholder (300x250 - MPU)", () => (
+    <Placeholder width={300} height={250} />
+  ))
+  .add("Placeholder (728x90 - Default)", () => (
+    <Placeholder width={728} height={90} />
+  ))
+  .add("Placeholder (970x250 - Billboard)", () => (
+    <Placeholder width={970} height={250} />
+  ))
+  .add("DOMContext", () => {
+    // script content: `window.global1 = "external value";`
+    const script =
+      "data:text/javascript;charset=utf-8;base64,d2luZG93Lmdsb2JhbDEgPSAiZXh0ZXJuYWwgdmFsdWUiOw==";
 
-//   return withOpenInNewWindow(
-//     <DOMContext
-//       scriptUris={[script]}
-//       globalNames={["global1"]}
-//       data={{ message: "data value" }}
-//       init={args => {
-//         const {
-//           el,
-//           renderComplete,
-//           data: { message },
-//           globals: { global1 }
-//         } = args;
-//         const worked =
-//           message === "data value" && global1 === "external value";
-//         el.innerHTML = `
-//           <div style="
-//               width: 100%;
-//               height: 100%;
-//               background: ${worked ? "#8C8" : "#C88"};
-//               font-size: 20px;
-//               padding: 10px;
-//           ">
-//             worked=${worked}<br>
-//             data.message=${message}<br>
-//             globals.global1=${global1}<br>
-//             <button class="renderComplete">call <code>renderComplete()</code></button><br>
-//             <button class="exception" onclick="throw new Error('bar')"><code>throw new Error("bar");</button><br>
-//             <button class="console-error" onclick="console.error('err')"><code>console.error("err");</code></button><br>
-//           </div>
-//         `;
-//         el
-//           .getElementsByClassName("renderComplete")[0]
-//           .addEventListener("click", renderComplete);
-//       }}
-//       onRenderComplete={action("onRenderComplete")}
-//       width={300}
-//       height={200}
-//     />
-//   );
-// })
-// .add("DOMContext with internal error", () => (
-//   <DOMContext
-//     init={() => {
-//       throw new Error("Example error message");
-//     }}
-//   />
-// )
-//);
+    return withOpenInNewWindow(
+      <DOMContext
+        scriptUris={[script]}
+        globalNames={["global1"]}
+        data={{ message: "data value" }}
+        init={args => {
+          const {
+            el,
+            renderComplete,
+            data: { message },
+            globals: { global1 }
+          } = args;
+          const worked =
+            message === "data value" && global1 === "external value";
+          el.innerHTML = `
+          <div style="
+              width: 100%;
+              height: 100%;
+              background: ${worked ? "#8C8" : "#C88"};
+              font-size: 20px;
+              padding: 10px;
+          ">
+            worked=${worked}<br>
+            data.message=${message}<br>
+            globals.global1=${global1}<br>
+            <button class="renderComplete">call <code>renderComplete()</code></button><br>
+            <button class="exception" onclick="throw new Error('bar')"><code>throw new Error("bar");</button><br>
+            <button class="console-error" onclick="console.error('err')"><code>console.error("err");</code></button><br>
+          </div>
+        `;
+          el
+            .getElementsByClassName("renderComplete")[0]
+            .addEventListener("click", renderComplete);
+        }}
+        onRenderComplete={action("onRenderComplete")}
+        width={300}
+        height={200}
+      />
+    );
+  })
+  .add("DOMContext with internal error", () => (
+    <DOMContext
+      init={() => {
+        throw new Error("Example error message");
+      }}
+    />
+  ));
