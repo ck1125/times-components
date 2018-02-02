@@ -78,6 +78,19 @@ storiesOf("BrightcoveVideo", module)
       hideFullScreenButton
     />
   ))
+  .add("Accepts height and width", () => {
+    return (
+      <View id="thing" style={{ width: "400px", height: "300px" }}>
+        <BrightcoveVideo
+          width="100%"
+          height="100%"
+          poster={{ uri: posterImageURI }}
+          videoId={videoId}
+          accountId={accountId}
+        />
+      </View>
+    );
+  })
   .add("Two launchers", () => (
     <View style={{ width: "100%", height: "100%" }}>
       <BrightcoveVideo
