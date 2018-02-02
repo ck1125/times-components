@@ -20,6 +20,7 @@ AdComposer.propTypes = {
   adConfig: PropTypes.shape({
     networkId: PropTypes.string.isRequired,
     adUnit: PropTypes.string.isRequired,
+    contextUrl: PropTypes.string.isRequired,
     pageTargeting: PropTypes.shape({})
   })
 };
@@ -28,7 +29,8 @@ AdComposer.defaultProps = {
   adConfig: {
     networkId: "25436805",
     adUnit: "d.thetimes.co.uk",
-    pageTargeting: {},
+    contextUrl: "https://www.thetimes.co.uk/",
+    pageTargeting: {}
   }
 };
 export default AdComposer;

@@ -42,6 +42,7 @@ class Ad extends Component {
       pos: this.props.pos,
       networkId: adConfig.networkId,
       adUnit: adConfig.adUnit,
+      contextUrl: adConfig.contextUrl,
       sizingMap: getSizeMaps(this.props.code),
       pageTargeting: adConfig.pageTargeting,
       slotOptions: { ...slotOptions, pos: this.props.pos }
