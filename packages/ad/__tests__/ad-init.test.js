@@ -93,7 +93,7 @@ describe("Ad init", () => {
     );
   });
 
-  it("configures googletag on page init", () => {
+  it("sets googletag page targeting values on page init", () => {
     initOptions.data.pageOptions = { pageOptionName: "pageOptionValue" };
     init = adInit(initOptions);
     init.pageInit();
@@ -102,6 +102,17 @@ describe("Ad init", () => {
       "pageOptionName",
       "pageOptionValue"
     );
+  });
+
+  it("sets grapeshot page targeting value", () => {
+    initOptions.globals.gs_channels = ["gs_a", "gs_b"];
+    init = adInit(initOptions);
+    init.pageInit();
+    processGoogletagCommandQueue();
+    expect(mockPubAds.setTargeting).toHaveBeenCalledWith("gs_cat", [
+      "gs_a",
+      "gs_b"
+    ]);
   });
 
   it("configures slots on slot init", () => {

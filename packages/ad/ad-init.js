@@ -3,7 +3,13 @@
 
 /* eslint-env browser */
 const adInit = args => {
-  const { el, data, window, globals: { googletag }, renderComplete } = args;
+  const {
+    el,
+    data,
+    window,
+    globals: { googletag, gs_channels },
+    renderComplete
+  } = args;
 
   let executed = false;
 
@@ -14,6 +20,7 @@ const adInit = args => {
         Object.entries(data.pageTargeting || {}).forEach(entry =>
           pubads.setTargeting(entry[0], entry[1])
         );
+        pubads.setTargeting("gs_cat", gs_channels);
         googletag.pubads().disableInitialLoad();
         googletag.pubads().enableSingleRequest();
         googletag.enableServices();

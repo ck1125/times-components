@@ -51,12 +51,19 @@ class Ad extends Component {
       ? { width: 0, height: 0 }
       : { height: this.config.maxSizes.height };
 
+    const grapeshotScriptUrl = `https://newscorp.grapeshot.co.uk/thetimes/channels.cgi?url=${encodeURIComponent(
+      this.props.contextUrl
+    )}`;
+
     const webviewComponent = (
       <DOMContext
         data={data}
-        scriptUris={["https://www.googletagservices.com/tag/js/gpt.js"]}
-        globalNames={["googletag"]}
-        baseUrl={this.props.baseUrl}
+        scriptUris={[
+          "https://www.googletagservices.com/tag/js/gpt.js",
+          grapeshotScriptUrl
+        ]}
+        globalNames={["googletag", "gs_channels"]}
+        baseUrl={this.props.contextUrl}
         init={adInit}
         onRenderComplete={this.setAdReady}
         {...sizeProps}
@@ -94,7 +101,7 @@ Ad.propTypes = {
   code: PropTypes.string.isRequired,
   section: PropTypes.string,
   pos: PropTypes.string,
-  baseUrl: PropTypes.string,
+  contextUrl: PropTypes.string,
   style: ViewPropTypesStyle
 };
 
@@ -105,7 +112,7 @@ Ad.defaultProps = {
   adUnit: "d.thetimes.co.uk",
   section: "article",
   pos: "article-ad",
-  baseUrl: "https://www.thetimes.co.uk/",
+  contextUrl: "https://www.thetimes.co.uk/",
   style: null
 };
 
