@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import Enzyme from "enzyme";
+import Enzyme, { shallow, mount } from "enzyme";
 import React16Adapter from "enzyme-adapter-react-16";
 
 import Ad, { AdComposer } from "../ad";
@@ -29,8 +29,9 @@ describe("Ad", () => {
   });
 
   it("renders without error", () => {
-    jest.spyOn(console, "error").mockImplementation((...args) => {
-      throw new Error(args.join(" "));
+    jest.spyOn(console, "error").mockImplementationOnce(message => {
+      console.error(message)
+      throw new Error(message);
     });
     renderer.create(
       <AdComposer>
@@ -47,6 +48,7 @@ describe("Ad", () => {
         <Ad {...adProps} code="ad-unknown-code" />
       </AdComposer>
     );
+    jest.clearAllMocks();
   });
 
   it.skip("handleLayout changes configuration", () => {});
@@ -78,5 +80,19 @@ describe("Ad", () => {
       .toJSON();
 
     expect(tree).toMatchSnapshot();
+  });
+
+  it("hides the placeholder when the ad is ready", () => {
+    jest.spyOn(console, "error").mockImplementation(() => {});
+    const mockAdConfig =   {
+      networkId: "25436805",
+      adUnit: "d.thetimes.co.uk",
+      pageTargeting: {}
+    };
+    const component = shallow(<Ad {...adProps} overrideAdConfig={mockAdConfig} code="ad-header" />);
+
+    expect(component.find("Placeholder").length).toEqual(1);
+    component.find("DOMContext").simulate("renderComplete");
+    expect(component.update().find("Placeholder").length).toEqual(0);
   });
 });

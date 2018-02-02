@@ -80,6 +80,9 @@ class Ad extends Component {
   }
 
   render() {
+    if (this.props.overrideAdConfig) {
+      return this.renderAd(this.props.overrideAdConfig)
+    }
     return (
       <Subscriber channel="adConfig">
         {adConfig => this.renderAd(adConfig)}
@@ -95,7 +98,12 @@ Ad.propTypes = {
   section: PropTypes.string,
   pos: PropTypes.string,
   baseUrl: PropTypes.string,
-  style: ViewPropTypesStyle
+  style: ViewPropTypesStyle,
+  overrideAdConfig: PropTypes.shape({
+    networkId: PropTypes.string.isRequired,
+    adUnit: PropTypes.string.isRequired,
+    pageTargeting: PropTypes.shape({})
+  })
 };
 
 // NOTE, these values are temporary, adding real values (or removing defaults
@@ -106,7 +114,8 @@ Ad.defaultProps = {
   section: "article",
   pos: "article-ad",
   baseUrl: "https://www.thetimes.co.uk/",
-  style: null
+  style: null,
+  overrideAdConfig: null
 };
 
 export default Ad;
