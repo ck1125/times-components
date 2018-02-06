@@ -38,8 +38,9 @@ class Ad extends Component {
     const data = {
       config: this.config,
       code: this.props.code,
-      networkId: adConfig.networkId,
-      adUnit: adConfig.adUnit,
+      networkId: this.props.networkId,
+      adUnit: this.props.adUnit,
+      contextUrl: "https://www.thetimes.co.uk/edition/news/ftse-fears-after-record-wall-st-fall-97bbj8p7n",
       section: this.props.section,
       pos: this.props.pos,
       sizingMap: getSizeMaps(this.props.code),
@@ -51,12 +52,13 @@ class Ad extends Component {
       ? { width: 0, height: 0 }
       : { height: this.config.maxSizes.height };
 
+    const grapeshotScriptUrl = `https://newscorp.grapeshot.co.uk/thetimes/channels.cgi?url=${encodeURIComponent(data.contextUrl)}`;
     const webviewComponent = (
       <DOMContext
         data={data}
-        preScript={[{uri:, callback}]}
+        preScripts={[grapeshotScriptUrl]}
         scriptUris={["https://www.googletagservices.com/tag/js/gpt.js"]}
-        globalNames={["googletag"]}
+        globalNames={["googletag", "gs_channels"]}
         baseUrl={this.props.baseUrl}
         init={adInit}
         onRenderComplete={this.setAdReady}
