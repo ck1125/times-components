@@ -40,8 +40,7 @@ class Ad extends Component {
       code: this.props.code,
       networkId: this.props.networkId,
       adUnit: this.props.adUnit,
-      contextUrl:
-        "https://www.thetimes.co.uk/article/fdefc7fa-0ac4-11e8-a5b3-3d239643ad40",
+      contextUrl: this.props.contextUrl,
       section: this.props.section,
       pos: this.props.pos,
       sizingMap: getSizeMaps(this.props.code),
@@ -109,6 +108,7 @@ Ad.propTypes = {
   section: PropTypes.string,
   pos: PropTypes.string,
   baseUrl: PropTypes.string,
+  contextUrl: PropTypes.string,
   style: ViewPropTypesStyle
 };
 
@@ -120,6 +120,7 @@ Ad.defaultProps = {
   section: "article",
   pos: "article-ad",
   baseUrl: "https://www.thetimes.co.uk/",
+  contextUrl: "",
   style: null
 };
 

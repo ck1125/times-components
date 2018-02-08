@@ -17,6 +17,8 @@ if (window.document) {
 } else {
   DOMContext = NativeDOMContext;
 }
+const articleUrl =
+  "https://www.thetimes.co.uk/article/fdefc7fa-0ac4-11e8-a5b3-3d239643ad40";
 
 const withOpenInNewWindow = children => {
   const link = typeof document === "object" &&
@@ -65,6 +67,18 @@ storiesOf("Advertisement", module)
           networkId="3048"
           width={1024}
           height={250}
+        />
+      </View>
+    )
+  )
+  .add("ad with grapeshot", () =>
+    withOpenInNewWindow(
+      <View>
+        <Ad
+          section="article"
+          code="ad-header"
+          pos="header"
+          contextUrl={articleUrl}
         />
       </View>
     )
