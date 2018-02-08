@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
   }
 });
 
-storiesOf("DatePublication", module)
+storiesOf("Simple/DatePublication", module)
   .add("standard DatePublication", () => (
     <Text style={styles.text}>
       <DatePublication {...props} />

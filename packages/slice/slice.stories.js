@@ -21,7 +21,7 @@ const createRelatedArticlesProps = fixtureData => ({
   onPress: preventDefaultedAction("onArticlePress")
 });
 
-storiesOf("Slice", module)
+storiesOf("Simple/Slice", module)
   .add("Single related article default", () => (
     <Slice
       item={createRelatedArticlesProps(singleRelatedArticleFixture.data)}

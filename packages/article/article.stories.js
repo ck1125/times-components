@@ -35,7 +35,7 @@ const mocks = [
   }
 ];
 
-storiesOf("Article", module)
+storiesOf("Complex/Article", module)
   .add("Default", () => {
     const props = {
       ...fullArticleFixture.data,

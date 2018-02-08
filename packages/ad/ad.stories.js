@@ -38,7 +38,7 @@ const withOpenInNewWindow = children => {
   );
 };
 
-storiesOf("Advertisement", module)
+storiesOf("Simple/Advertisement", module)
   .add("render one ad", () => withOpenInNewWindow(<Ad code="intervention" />))
   .add("render article ads", () =>
     withOpenInNewWindow(

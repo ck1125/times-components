@@ -11,7 +11,7 @@ import reviewFixture from "./fixtures/review.json";
 
 const story = m => <View style={{ padding: 20 }}>{m}</View>;
 
-storiesOf("ArticleSummary", module)
+storiesOf("Compound/ArticleSummary", module)
   .add("Default", () => story(<ArticleSummary {...defaultFixture} />))
   .add("Summary with multiple paragraphs", () =>
     story(<ArticleSummary {...articleMultiFixture} />)
