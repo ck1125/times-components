@@ -3,7 +3,6 @@ import React from "react";
 import { Text, ScrollView, View } from "react-native";
 import { action } from "@storybook/addon-actions";
 import { storiesOf } from "dextrose/storiesOfOverloader";
-import stateful from "react-stateful-fn";
 
 import Ad, { AdComposer } from "./ad";
 import Placeholder from "./placeholder";
@@ -133,23 +132,6 @@ storiesOf("Advertisement", module)
       </ScrollView>
     )
   )
-  .add("remove and re-add ads", () => {
-    const Component = stateful((props, { show }, { setState }) =>
-      withOpenInNewWindow(
-        <ScrollView>
-          <Ad code="header" section="article" />
-          <Text
-            style={{ color: "blue", textDecorationLine: "underline" }}
-            onPress={() => setState({ show: !show })}
-          >
-            {show ? "hide second ad" : "show second ad"}.
-          </Text>
-          {show && <Ad code="intervention" section="article" />}
-        </ScrollView>
-      )
-    );
-    return <Component />;
-  })
   .add("Placeholder (300x250 - MPU)", () => (
     <Placeholder width={300} height={250} />
   ))
