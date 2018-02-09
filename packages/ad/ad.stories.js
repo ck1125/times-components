@@ -139,7 +139,7 @@ storiesOf("Advertisement", module)
         <ScrollView>
           <Ad code="header" section="article" />
           <Text
-            style={{ color: "blue", textDecoration: "underline" }}
+            style={{ color: "blue", textDecorationLine: "underline" }}
             onPress={() => setState({ show: !show })}
           >
             {show ? "hide second ad" : "show second ad"}.
